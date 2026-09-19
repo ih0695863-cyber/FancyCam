@@ -7,9 +7,9 @@ rawset(_G, "CR_GRINDRAIL", 3888)
 
 addHook("ThinkFrame", function()
     for p in players.iterate do
-        if not p.mo or not p.mo.valid then
-        elseif twodlevel or (p.powers[pw_carry] == CR_GRINDRAIL) then
-        elseif p.playerstate == PST_LIVE then
+        if not p.mo or not p.mo.valid then return false end
+        if twodlevel or p.bot or (p.powers[pw_carry] == CR_GRINDRAIL) then return false end
+        if p.playerstate == PST_LIVE then
            local cam = p.awayviewmobj
             if not (cam and cam.valid and userdataType(cam) == "CAMERA_T") then
                 cam = camera
