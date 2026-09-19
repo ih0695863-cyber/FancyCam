@@ -3,9 +3,14 @@ local CAM_DIST = 140*FRACUNIT
 local CAM_HEIGHT = 15*FRACUNIT
 local CAM_LAG = FRACUNIT/6
 
+addHook("MapLoad", function()
+    solcamActive = mapheaderinfo[gamemap] and mapheaderinfo[gamemap]["lua.solcam"] == "on"
+end)
+
 rawset(_G, "CR_GRINDRAIL", 3888)
 
 addHook("ThinkFrame", function()
+    if solcamActive then return end
     for p in players.iterate do
         if not p.mo or not p.mo.valid then return false end
         if twodlevel or p.bot or (p.powers[pw_carry] == CR_GRINDRAIL) then return false end
