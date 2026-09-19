@@ -1,4 +1,4 @@
--- Cartridge's FancyCam!
+-- The FancyCam Script!
 local CAM_DIST = 140*FRACUNIT
 local CAM_HEIGHT = 15*FRACUNIT
 local CAM_LAG = FRACUNIT/6
